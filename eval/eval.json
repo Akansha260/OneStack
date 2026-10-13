@@ -58,7 +58,7 @@
   {"id": "ADV8-before-policy", "adversarial": true,
    "question": "What is the UPI settlement time?", "as_of": "2025-11-01",
    "expected_status": "CANNOT_ANSWER", "expected_citations": [],
-   "expected_answer": "No policy in force before 1 Jan 2026", "must_contain": ["No policy document"]},
+   "expected_answer": "Supplied corpus has no policy before 1 Jan 2026", "must_contain": ["contain no policy"]},
 
   {"id": "E1-circular-rate", "question": "What MDR does a small merchant pay on a Rs.2,000 UPI payment?", "as_of": "2026-08-01",
    "expected_status": "CONFLICT_RESOLVED", "expected_citations": ["B", "C", "2.4"],

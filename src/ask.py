@@ -317,7 +317,7 @@ def ask(question, as_of_date=None):
     else:
         as_of = date.fromisoformat(as_of_date) if isinstance(as_of_date, str) else as_of_date
     if not store.policy_exists(as_of):
-        return _result(CANNOT, f"No policy document was in force on {as_of}; the Master Document starts 01 Jan 2026.", [], None, as_of)
+        return _result(CANNOT, f"The supplied documents contain no policy in force on {as_of}; the earliest, the Master Document, is effective from 01 Jan 2026.", [], None, as_of)
     if p["faq"]:
         return h_faq(p, as_of)
     return HANDLERS.get(p["topic"], h_unknown)(p, as_of)
