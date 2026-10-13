@@ -124,15 +124,15 @@ def limit_check(p, d, amount, count):
         lines.append(f"{each} {inr(amount)} payment is within the {inr(per)} per-transaction limit (§4.1).")
 
     total = amount * count
-    cap_txt = f"{inr(daily)}, or less if the customer's own bank sets a lower limit" if bank else inr(daily)
+    cap_txt = f"{inr(daily)} (or a lower limit set by the customer's bank)" if bank else inr(daily)
     src = "§4.3 as amended by Circular §E" if bank else "§4.3"
     cites.append(cday)
     if total > daily:
         ok = False
         if count > 1:
-            lines.append(f"But one customer can pay at most {cap_txt}, per day across all UPI payments ({src}); {count} × {inr(amount)} = {inr(total)} exceeds that, so the second payment would be declined.")
+            lines.append(f"However, the {count} payments total {inr(total)}, which exceeds the customer's daily UPI limit of {cap_txt} ({src}). They cannot all be accepted on the same day.")
         else:
-            lines.append(f"Separately, one customer can pay at most {cap_txt}, per day across all UPI payments ({src}), so a single {inr(total)} payment from one customer cannot go through.")
+            lines.append(f"Separately, a single {inr(total)} payment exceeds the customer's daily UPI limit of {cap_txt} ({src}), so it cannot be accepted from one customer in a day.")
         if per < amount <= enh:
             res = ("§4.2 allows up to ₹2,00,000 per transaction for eligible merchants, but the "
                    "customer daily limit (§4.3/§E) is ₹1,00,000. The documents don't reconcile this; "
